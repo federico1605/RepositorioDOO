@@ -5,7 +5,7 @@ import java.util.UUID;
 import static edu.uco.budget.crosscutting.helper.NumberHelper.isLessThan;
 import static edu.uco.budget.crosscutting.helper.NumberHelper.ZERO;
 import static edu.uco.budget.crosscutting.helper.UUIDHelper.getDefaultUUID;
-import static edu.uco.budget.crosscutting.helper.UUIDHelper.getNewUUID;;
+import static edu.uco.budget.crosscutting.helper.UUIDHelper.getNewUUID;
 
 public final class Year_DTO {
 	
