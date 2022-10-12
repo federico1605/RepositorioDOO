@@ -1,9 +1,9 @@
 package edu.uco.budget.domain;
 
 import static edu.uco.budget.crosscutting.helper.UUIDHelper.getDefaultUUID;
-import static edu.uco.budget.domain.helper.StringHelper.applyTrim;
+import static edu.uco.budget.crosscutting.helper.StringHelper.applyTrim;
 import static edu.uco.budget.crosscutting.helper.UUIDHelper.getNewUUID;
-import static edu.uco.budget.domain.helper.StringHelper.EMPTY;
+import static edu.uco.budget.crosscutting.helper.StringHelper.EMPTY;
 
 import java.util.UUID;
 
@@ -25,13 +25,19 @@ public class PersonDTO {
 		setSecondSurname(EMPTY);
 	}
 	
-	public PersonDTO(final UUID id, final String idCard, final String firstName, final String secondName, final String firstSurname, final String secondSurname) {
+	public PersonDTO(final UUID id, final String idCard, final String firstName, final String secondName, 
+			final String firstSurname, final String secondSurname) {
 		setId(id);
 		setIdCard(idCard);
 		setFirstName(firstName);
 		setSecondName(secondName);
 		setFirstSurname(firstSurname);
 		setSecondSurname(secondSurname);
+	}
+	
+	public static final PersonDTO create (final UUID id, final String idCard, final String firstName, final String secondName, 
+			final String firstSurname, final String secondSurname) {
+		return new PersonDTO(id, idCard, firstName, secondName, firstSurname, secondSurname);
 	}
 	
 	public final UUID getId() {

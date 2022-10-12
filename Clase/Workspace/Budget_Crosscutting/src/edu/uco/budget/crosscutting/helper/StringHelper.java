@@ -1,4 +1,4 @@
-package edu.uco.budget.domain.helper;
+package edu.uco.budget.crosscutting.helper;
 
 import static edu.uco.budget.crosscutting.helper.ObjectHelper.getDefaultIfNull;
 
