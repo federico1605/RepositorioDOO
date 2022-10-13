@@ -2,7 +2,7 @@ package edu.uco.budget.domain.builder;
 
 import java.util.UUID;
 
-import edu.uco.budget.domain.Year_DTO;
+import edu.uco.budget.domain.YearDTO;
 
 public class YearDTOBuilder {
  
@@ -27,7 +27,7 @@ public class YearDTOBuilder {
 		return this;
 	}
 	
-	public final Year_DTO build() {
-		return Year_DTO.create(id, yearNumber);
+	public final YearDTO build() {
+		return YearDTO.create(id, yearNumber);
 	}
 }

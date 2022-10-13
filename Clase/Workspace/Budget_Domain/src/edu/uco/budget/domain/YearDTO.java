@@ -7,23 +7,23 @@ import static edu.uco.budget.crosscutting.helper.NumberHelper.ZERO;
 import static edu.uco.budget.crosscutting.helper.UUIDHelper.getDefaultUUID;
 import static edu.uco.budget.crosscutting.helper.UUIDHelper.getNewUUID;
 
-public final class Year_DTO {
+public final class YearDTO {
 	
 	private UUID  id;
 	private short yearNumber;
 	
-	public Year_DTO(){
+	public YearDTO(){
 		setId(getNewUUID());
 		setYearNumber(ZERO);
 	}
 
-	public Year_DTO(final UUID id, final short yearNumber) {
+	public YearDTO(final UUID id, final short yearNumber) {
 		setId(id);
 		setYearNumber(yearNumber);
 	}
 	
-	public static final Year_DTO create (final UUID id, final short yearNumber) {
-		return new Year_DTO(id, yearNumber);
+	public static final YearDTO create (final UUID id, final short yearNumber) {
+		return new YearDTO(id, yearNumber);
 	}
 
 	public final UUID getId() {

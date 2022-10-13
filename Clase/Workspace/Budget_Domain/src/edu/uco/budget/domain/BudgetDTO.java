@@ -7,18 +7,18 @@ import static edu.uco.budget.domain.builder.PersonDTOBuilder.getPersonDTOBuilder
 
 public class BudgetDTO {
 	
-	private Year_DTO year;
+	private YearDTO year;
 	private PersonDTO person;
 
 	public BudgetDTO() {
 		super();
 	}
 
-	public Year_DTO getYear() {
+	public YearDTO getYear() {
 		return year;
 	}
 
-	public void setYear(Year_DTO year) {
+	public void setYear(YearDTO year) {
 		this.year = getDefaultIfNull(year, getYearDTOBuilder().build());
 	}
 
