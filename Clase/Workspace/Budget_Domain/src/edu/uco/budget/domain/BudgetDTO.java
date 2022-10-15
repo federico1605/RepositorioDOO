@@ -2,16 +2,30 @@ package edu.uco.budget.domain;
 
 import static edu.uco.budget.crosscutting.helper.ObjectHelper.getDefaultIfNull;
 import static edu.uco.budget.domain.builder.YearDTOBuilder.getYearDTOBuilder;
+import static edu.uco.budget.crosscutting.helper.UUIDHelper.getDefaultUUID;
+
+
+import java.util.UUID;
+
 import static edu.uco.budget.domain.builder.PersonDTOBuilder.getPersonDTOBuilder;
 
 
 public class BudgetDTO {
 	
+	private UUID id;
 	private YearDTO year;
 	private PersonDTO person;
 
 	public BudgetDTO() {
 		super();
+	}
+	
+	public UUID getId() {
+		return id;
+	}
+
+	public final void setId(final UUID id) {
+		this.id = getDefaultUUID(id);
 	}
 
 	public YearDTO getYear() {
