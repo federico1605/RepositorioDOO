@@ -11,7 +11,6 @@ public interface BudgetDAO {
 	
 	List<BudgetDTO> find( BudgetDTO budget);
 	
-	
 	void update( BudgetDTO budget);
 	
 	void delete( UUID id);

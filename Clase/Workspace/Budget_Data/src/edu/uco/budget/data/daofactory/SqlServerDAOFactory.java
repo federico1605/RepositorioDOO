@@ -9,7 +9,7 @@ import edu.uco.budget.data.dao.relational.sqlserver.BudgetSqlServerDAO;
 import edu.uco.budget.data.dao.relational.sqlserver.PersonSqlServerDAO;
 import edu.uco.budget.data.dao.relational.sqlserver.YearSqlServerDAO;
 
-public final class SqlServerDAOFactory extends DAOFactory{
+final class SqlServerDAOFactory extends DAOFactory{
 
 	private Connection connection;
 	

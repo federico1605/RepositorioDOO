@@ -16,7 +16,7 @@ public class DAORelational {
 			throw new RuntimeException(Messages.SqlConnectionHelper.TECHNICAL_CONNECTION_IS_CLOSED);
 		}		
 	
-	this.connection = connection;
+		this.connection = connection;
 	
 	}
 

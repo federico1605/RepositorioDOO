@@ -7,6 +7,7 @@ import edu.uco.budget.data.dao.YearDAO;
 import edu.uco.budget.data.enumeration.DAOFactoryType;
 
 public abstract class DAOFactory {
+	
 	public static final DAOFactory getDAOFactory(final DAOFactoryType factory) {
 		
 		DAOFactory daoFactory;
