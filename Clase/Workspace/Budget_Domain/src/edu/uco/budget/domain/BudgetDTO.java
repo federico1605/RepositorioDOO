@@ -19,8 +19,8 @@ public class BudgetDTO {
 
 	public BudgetDTO() {
 		setId(getNewUUID());
-		setPerson(person);
-		setYear(year);
+		setPerson(getPersonDTOBuilder().build());
+		setYear(getYearDTOBuilder().build());
 	}
 	
 	public BudgetDTO(final UUID id,final YearDTO year,final PersonDTO person ) {
@@ -30,7 +30,7 @@ public class BudgetDTO {
 	}
 	
 	public static final BudgetDTO create(final UUID id,final YearDTO year,final PersonDTO  person) {
-		return new BudgetDTO();
+		return new BudgetDTO(id,year,person);
 	}
 	
 	public UUID getId() {

@@ -1,6 +1,8 @@
 package edu.uco.budget.data.daofactory;
 
 import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 
 import edu.uco.budget.data.dao.BudgetDAO;
 import edu.uco.budget.data.dao.PersonDAO;
@@ -9,41 +11,53 @@ import edu.uco.budget.data.dao.relational.sqlserver.BudgetSqlServerDAO;
 import edu.uco.budget.data.dao.relational.sqlserver.PersonSqlServerDAO;
 import edu.uco.budget.data.dao.relational.sqlserver.YearSqlServerDAO;
 
-final class SqlServerDAOFactory extends DAOFactory{
+final class SqlServerDAOFactory extends DAOFactory {
 
 	private Connection connection;
-	
+
 	SqlServerDAOFactory() {
 		openConnection();
 	}
-	
+
 	@Override
 	protected void openConnection() {
-		connection = null;
+		final String url = "jdbc:sqlserver://rg-wf.database.windows.net:1433;"
+				+ "database=db-budget;"
+				+ "user=userDmlBudget;"
+				+ "password=us3rDmlBudg3t;"
+				+ "encrypt=true;"
+				+ "trustServerCertificate=false;"
+				+ "hostNameInCertificate=*.database.windows.net;"
+				+ "loginTimeout=30;";
+		try {
+			connection = DriverManager.getConnection(url);
+		}catch (SQLException exception) {
+			throw new RuntimeException("No se pudo conectar");
+		}
 	}
 
 	@Override
 	public void initTransaction() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void confirmTransaction() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void cancelTransaction() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void closeConnection() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override

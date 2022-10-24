@@ -20,4 +20,15 @@ public final class SqlConnectionHelper {
 			throw new RuntimeException(exception.getMessage());
 		}
 	}
+	
+	/*public static final void closeConnection(final Connection connection) {
+		try {
+			if(!connectionIsOpen(connection)) {
+				throw CrooscuttiongCustomException.createTechnicalException(null);
+			}
+		}catch(final SQLException exception) {
+			
+		}
+		connection.close();
+	}*/
 }

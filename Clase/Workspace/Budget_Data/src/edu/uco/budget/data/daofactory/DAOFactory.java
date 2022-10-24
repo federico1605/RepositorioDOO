@@ -35,7 +35,7 @@ public abstract class DAOFactory {
 	}
 
 	protected abstract void openConnection();
-	
+
 	public abstract void initTransaction();
 	
 	public abstract void confirmTransaction();
