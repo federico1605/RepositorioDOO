@@ -1,5 +1,6 @@
 package edu.uco.budget.data.daofactory;
 
+import edu.uco.budget.crosscutting.customException.CrosscutingCustomException;
 import edu.uco.budget.crosscutting.messages.Messages;
 import edu.uco.budget.data.dao.BudgetDAO;
 import edu.uco.budget.data.dao.PersonDAO;
@@ -34,7 +35,7 @@ public abstract class DAOFactory {
 		return daoFactory;
 	}
 
-	protected abstract void openConnection();
+	protected abstract void openConnection() throws CrosscutingCustomException;
 
 	public abstract void initTransaction();
 	

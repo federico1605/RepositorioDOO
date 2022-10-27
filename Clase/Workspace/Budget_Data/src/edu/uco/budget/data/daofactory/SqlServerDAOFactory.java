@@ -10,17 +10,19 @@ import edu.uco.budget.data.dao.YearDAO;
 import edu.uco.budget.data.dao.relational.sqlserver.BudgetSqlServerDAO;
 import edu.uco.budget.data.dao.relational.sqlserver.PersonSqlServerDAO;
 import edu.uco.budget.data.dao.relational.sqlserver.YearSqlServerDAO;
+import edu.uco.budget.crosscutting.customException.CrosscutingCustomException;
+import static edu.uco.budget.crosscutting.messages.Messages.SqlConnectionHelper.TECHNICAL_CONNECTION_IS_NULL;;
 
 final class SqlServerDAOFactory extends DAOFactory {
 
 	private Connection connection;
 
-	SqlServerDAOFactory() {
+	SqlServerDAOFactory() throws CrosscutingCustomException {
 		openConnection();
 	}
 
 	@Override
-	protected void openConnection() {
+	protected void openConnection() throws CrosscutingCustomException {
 		final String url = "jdbc:sqlserver://rg-wf.database.windows.net:1433;"
 				+ "database=db-budget;"
 				+ "user=userDmlBudget;"
@@ -32,7 +34,7 @@ final class SqlServerDAOFactory extends DAOFactory {
 		try {
 			connection = DriverManager.getConnection(url);
 		}catch (SQLException exception) {
-			throw new RuntimeException("No se pudo conectar");
+			throw CrosscutingCustomException.create(TECHNICAL_CONNECTION_IS_NULL);
 		}
 	}
 
