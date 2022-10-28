@@ -1,14 +1,30 @@
 package edu.uco.budget.crosscutting.customException;
 
-public class CrosscutingCustomException extends DataCustomException{
+import edu.uco.budget.crosscutting.customException.enumeration.LayerException;
+import static edu.uco.budget.crosscutting.helper.StringHelper.EMPTY;
 
-	private CrosscutingCustomException(Exception exceptionConnection, String mensaje) {
-		super(exceptionConnection, mensaje);
-	}
-
-	private static final long serialVersionUID = 1L;
+public class CrosscutingCustomException extends BudgetCustomException{
 	
-	public static CrosscutingCustomException create(String mensajeUsuario) {
-		return new CrosscutingCustomException(new Exception(), mensajeUsuario);
+	private static final long serialVersionUID = 1L;
+
+	protected CrosscutingCustomException(Exception rootException, String technicalMessage, String userMessage) {
+		super(rootException, technicalMessage, userMessage, LayerException.CROSSCUTING);
+	}
+	
+	public static CrosscutingCustomException create(String userMessage, String technicalMessage) {
+		return new CrosscutingCustomException(new Exception(), userMessage, technicalMessage);
+	}
+	
+	public static final BudgetCustomException createTechnicalException(final String technicalMessage,final Exception rootException) {
+		return new CrosscutingCustomException(new Exception(), technicalMessage, EMPTY);
+	}
+	
+	public static final BudgetCustomException createUserException(final String userMessage, final Exception rootException) {
+		return new CrosscutingCustomException(rootException, userMessage, userMessage);
+	}
+	
+	public static final BudgetCustomException create(final String userMessage, final String technicalMessage,
+			final Exception rootException) {
+		return new CrosscutingCustomException(rootException, technicalMessage, userMessage);
 	}
 }

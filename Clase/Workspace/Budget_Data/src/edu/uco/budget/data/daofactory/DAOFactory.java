@@ -1,5 +1,6 @@
 package edu.uco.budget.data.daofactory;
 
+import edu.uco.budget.crosscutting.customException.BudgetCustomException;
 import edu.uco.budget.crosscutting.customException.CrosscutingCustomException;
 import edu.uco.budget.crosscutting.messages.Messages;
 import edu.uco.budget.data.dao.BudgetDAO;
@@ -15,27 +16,74 @@ public abstract class DAOFactory {
 		
 		switch (factory) {
 		case SQL_SERVER: 
-			daoFactory = new SqlServerDAOFactory();
+			try {
+				daoFactory = new SqlServerDAOFactory();
+			} catch (BudgetCustomException excetion) {
+				throw CrosscutingCustomException.createTechnicalException(Messages.DAOFactory.TECHNICAL_UNEXPECTED_DAOFACTORY, 
+						excetion);
+			}
 			break;
 		case CASSANDRA: 
-			throw new RuntimeException(Messages.DAOFactory.TECHNICAL_CASSANDRA_NOT_IMPLEMENTED);
+			try {
+				daoFactory = new SqlServerDAOFactory();
+			} catch (BudgetCustomException excetion) {
+				throw CrosscutingCustomException.createTechnicalException(Messages.DAOFactory.TECHNICAL_CASSANDRA_NOT_IMPLEMENTED, 
+						excetion);
+			}
+			break;
 		case MARIADB: 
-			throw new RuntimeException(Messages.DAOFactory.TECHNICAL_MARIADB_NOT_IMPLEMENTED);
+			try {
+				daoFactory = new SqlServerDAOFactory();
+			} catch (Exception excetion) {
+				throw CrosscutingCustomException.createTechnicalException(Messages.DAOFactory.TECHNICAL_MARIADB_NOT_IMPLEMENTED, 
+						excetion);
+			}
+			break;
 		case MONGODB: 
-			throw new RuntimeException(Messages.DAOFactory.TECHNICAL_MONGDB_NOT_IMPLEMENTED);
+			try {
+				daoFactory = new SqlServerDAOFactory();
+			} catch (Exception excetion) {
+				throw CrosscutingCustomException.createTechnicalException(Messages.DAOFactory.TECHNICAL_MONGDB_NOT_IMPLEMENTED, 
+						excetion);
+			}
+			break;
 		case MYSQL: 
-			throw new RuntimeException(Messages.DAOFactory.TECHNICAL_MYSQL_NOT_IMPLEMENTED);
+			try {
+				daoFactory = new SqlServerDAOFactory();
+			} catch (Exception excetion) {
+				throw CrosscutingCustomException.createTechnicalException(Messages.DAOFactory.TECHNICAL_MYSQL_NOT_IMPLEMENTED, 
+						excetion);
+			}
+			break;
 		case ORACLE: 
-			throw new RuntimeException(Messages.DAOFactory.TECHNICAL_ORACLE_NOT_IMPLEMENTED);
+			try {
+				daoFactory = new SqlServerDAOFactory();
+			} catch (Exception excetion) {
+				throw CrosscutingCustomException.createTechnicalException(Messages.DAOFactory.TECHNICAL_ORACLE_NOT_IMPLEMENTED, 
+						excetion);
+			}
+			break;
 		case POSTGRESQL: 
-			throw new RuntimeException(Messages.DAOFactory.TECHNICAL_POSTGRESQL_NOT_IMPLEMENTED);
+			try {
+				daoFactory = new SqlServerDAOFactory();
+			} catch (Exception excetion) {
+				throw CrosscutingCustomException.createTechnicalException(Messages.DAOFactory.TECHNICAL_POSTGRESQL_NOT_IMPLEMENTED, 
+						excetion);
+			}
+			break;
 		default:
-			throw new RuntimeException(Messages.DAOFactory.TECHNICAL_UNEXPECTED_DAOFACTORY);
+			try {
+				daoFactory = new SqlServerDAOFactory();
+			} catch (Exception excetion) {
+				throw CrosscutingCustomException.createTechnicalException(Messages.DAOFactory.TECHNICAL_UNEXPECTED_DAOFACTORY, 
+						excetion);
+			}
+			break;
 		}
 		return daoFactory;
 	}
 
-	protected abstract void openConnection() throws CrosscutingCustomException;
+	protected abstract void openConnection();
 
 	public abstract void initTransaction();
 	

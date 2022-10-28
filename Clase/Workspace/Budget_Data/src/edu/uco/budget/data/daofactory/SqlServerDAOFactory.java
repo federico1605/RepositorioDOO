@@ -2,27 +2,26 @@ package edu.uco.budget.data.daofactory;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.SQLException;
 
+import edu.uco.budget.crosscutting.customException.CrosscutingCustomException;
 import edu.uco.budget.data.dao.BudgetDAO;
 import edu.uco.budget.data.dao.PersonDAO;
 import edu.uco.budget.data.dao.YearDAO;
 import edu.uco.budget.data.dao.relational.sqlserver.BudgetSqlServerDAO;
 import edu.uco.budget.data.dao.relational.sqlserver.PersonSqlServerDAO;
 import edu.uco.budget.data.dao.relational.sqlserver.YearSqlServerDAO;
-import edu.uco.budget.crosscutting.customException.CrosscutingCustomException;
-import static edu.uco.budget.crosscutting.messages.Messages.SqlConnectionHelper.TECHNICAL_CONNECTION_IS_NULL;;
+import edu.uco.budget.crosscutting.messages.Messages.SqlConnectionHelper;
 
 final class SqlServerDAOFactory extends DAOFactory {
 
 	private Connection connection;
 
-	SqlServerDAOFactory() throws CrosscutingCustomException {
+	SqlServerDAOFactory() {
 		openConnection();
 	}
 
 	@Override
-	protected void openConnection() throws CrosscutingCustomException {
+	protected void openConnection()  {
 		final String url = "jdbc:sqlserver://rg-wf.database.windows.net:1433;"
 				+ "database=db-budget;"
 				+ "user=userDmlBudget;"
@@ -33,9 +32,15 @@ final class SqlServerDAOFactory extends DAOFactory {
 				+ "loginTimeout=30;";
 		try {
 			connection = DriverManager.getConnection(url);
-		}catch (SQLException exception) {
-			throw CrosscutingCustomException.create(TECHNICAL_CONNECTION_IS_NULL);
+		}catch (Exception exception) {
+			throw CrosscutingCustomException.createTechnicalException(SqlConnectionHelper.TECHNICAL_CONNECTION_IS_CLOSED, 
+					excetion());
 		}
+	}
+
+	private Exception excetion() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
