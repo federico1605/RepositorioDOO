@@ -8,6 +8,10 @@ import static edu.uco.budget.crosscutting.helper.UUIDHelper.getNewUUID;
 
 import java.util.UUID;
 
+import edu.uco.budget.crosscutting.customException.CrosscutingCustomException;
+import edu.uco.budget.crosscutting.helper.StringHelper;
+import edu.uco.budget.crosscutting.messages.Messages;
+
 import static edu.uco.budget.domain.builder.PersonDTOBuilder.getPersonDTOBuilder;
 
 
@@ -31,6 +35,19 @@ public class BudgetDTO {
 	
 	public static final BudgetDTO create(final UUID id,final YearDTO year,final PersonDTO  person) {
 		return new BudgetDTO(id,year,person);
+	}
+	
+	public static final String getUUIDAsString(final UUID value) {
+		return getDefaultUUID(value).toString();
+	}
+	
+	public static final UUID getUUIDFromString(final String value) {
+		try {
+			return UUID.fromString(StringHelper.getDafuaultString(value));
+		} catch (IllegalArgumentException exception) {
+			throw CrosscutingCustomException.createTechnicalException(Messages.UUIDHelper.TECHICAL_UUID_FROM_STRING_INAVLID, exception);
+		}
+		
 	}
 	
 	public UUID getId() {

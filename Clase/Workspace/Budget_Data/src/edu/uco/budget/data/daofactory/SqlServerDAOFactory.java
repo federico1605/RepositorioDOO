@@ -21,26 +21,16 @@ final class SqlServerDAOFactory extends DAOFactory {
 	}
 
 	@Override
-	protected void openConnection()  {
-		final String url = "jdbc:sqlserver://rg-wf.database.windows.net:1433;"
-				+ "database=db-budget;"
-				+ "user=userDmlBudget;"
-				+ "password=us3rDmlBudg3t;"
-				+ "encrypt=true;"
-				+ "trustServerCertificate=false;"
-				+ "hostNameInCertificate=*.database.windows.net;"
-				+ "loginTimeout=30;";
+	protected void openConnection() {
+		final String url = "jdbc:sqlserver://rg-wf.database.windows.net:1433;" + "database=db-budget;"
+				+ "user=userDmlBudget;" + "password=us3rDmlBudg3t;" + "encrypt=true;" + "trustServerCertificate=false;"
+				+ "hostNameInCertificate=*.database.windows.net;" + "loginTimeout=30;";
 		try {
 			connection = DriverManager.getConnection(url);
-		}catch (Exception exception) {
-			throw CrosscutingCustomException.createTechnicalException(SqlConnectionHelper.TECHNICAL_CONNECTION_IS_CLOSED, 
-					excetion());
+		} catch (Exception exception) {
+			throw CrosscutingCustomException.createTechnicalException(SqlConnectionHelper.TECHNICAL_CONNECTION_IS_NULL,
+					exception);
 		}
-	}
-
-	private Exception excetion() {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 	@Override
@@ -51,19 +41,30 @@ final class SqlServerDAOFactory extends DAOFactory {
 
 	@Override
 	public void confirmTransaction() {
-		// TODO Auto-generated method stub
+		try {
+			connection.commit();
+		} catch (Exception exception) {
 
+		}
 	}
 
 	@Override
 	public void cancelTransaction() {
-		// TODO Auto-generated method stub
+		try {
+			connection.rollback();
+		} catch (Exception exception) {
+			// TODO: handle exception
+		}
 
 	}
 
 	@Override
 	public void closeConnection() {
-		// TODO Auto-generated method stub
+		try {
+			connection.close();
+		} catch (Exception exception) {
+			// TODO: handle exception
+		}
 
 	}
 

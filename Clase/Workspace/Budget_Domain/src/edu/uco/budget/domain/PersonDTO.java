@@ -87,5 +87,8 @@ public class PersonDTO {
 
 	public void setSecondSurname(final String secondSurname) {
 		this.secondSurname = applyTrim(secondSurname);
+		
 	}
+	
+	
 }

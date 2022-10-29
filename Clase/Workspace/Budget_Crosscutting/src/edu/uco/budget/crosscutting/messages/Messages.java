@@ -30,4 +30,18 @@ public class Messages {
 		public static  final String TECHNICAL_CONNECTION_IS_NULL = "Connection is null";
 		public static  final String TECHNICAL_CONNECTION_IS_CLOSED = "Connection is closed";
 	}
+	
+	public static class UUIDHelper{
+		private UUIDHelper() {
+			super();
+		}
+		
+		public static final String TECHICAL_UUID_FROM_STRING_INAVLID ="The UUID to covert does not have a valied";
+		public static final String TECNICAL_UUID_FROM_STRING_UNEXPECTED_ERROR = "copiar error";
+	}
+	
+	/*public stactic class BudgetSqlServerDAO{
+	 	private BudgetSqlServerDAO(){
+	 		super();
+	 	}*/
 }
