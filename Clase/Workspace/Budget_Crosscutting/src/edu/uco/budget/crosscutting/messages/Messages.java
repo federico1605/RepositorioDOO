@@ -29,6 +29,25 @@ public class Messages {
 		
 		public static  final String TECHNICAL_CONNECTION_IS_NULL = "Connection is null";
 		public static  final String TECHNICAL_CONNECTION_IS_CLOSED = "Connection is closed";
+		public static  final String TECHNICAL_CONNECTION_ALREADY_IS_CLOSED = "Connection already is closed";
+		public static  final String TECHNICAL_PROBLEM_CLOSING_CONNECTION = "There was a problem try to close connection. Please verify the technical details";
+		public static  final String TECHNICAL_CONNETION_IS_CLOSED_FOR_INIT_TRANSACTION = "Connetion is closed to start a new init transaction";
+		public static  final String TECHNICAL_CONNETION_IS_CLOSED_FOR_ROLLBACK_TRANSACTION = "Connetion is closed to rollback transaction";
+		public static  final String TECHNICAL_CONNETION_IS_CLOSED_FOR_COMMIT_TRANSACTION = "Connetion is closed to commit the current transaction";
+		public static  final String TECHNICAL_PROBLEM_TRY_INIT_TRANSACTION = "There was a problem trying to start the transaction. Please verify the technical details";
+		public static  final String TECHNICAL_PROBLEM_TRY_COMMIT_TRANSACTION = "There was a problem trying to commit the current transaction. Please verify the technical details";
+		public static  final String TECHNICAL_PROBLEM_TRY_ROLLBACK_TRANSACTION = "There was a problem trying to rollback the current transaction. Please verify the technical details";
+
+	}
+	
+public static class SqlServerDAOFactory{
+		
+		private SqlServerDAOFactory() {
+			super();
+		}
+		
+		public static  final String TECHNICAL_PROBLEM_INIT_TRANSACTION = "There was a problem trying to init transaction with the current connection in SQLServerDaoFactory";
+
 	}
 	
 	public static class UUIDHelper{

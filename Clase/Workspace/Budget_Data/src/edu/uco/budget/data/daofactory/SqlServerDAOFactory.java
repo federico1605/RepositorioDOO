@@ -4,13 +4,15 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 
 import edu.uco.budget.crosscutting.customException.CrosscutingCustomException;
+import edu.uco.budget.crosscutting.customException.DataCustomException;
+import edu.uco.budget.crosscutting.helper.SqlConnectionHelper;
+import edu.uco.budget.crosscutting.messages.Messages;
 import edu.uco.budget.data.dao.BudgetDAO;
 import edu.uco.budget.data.dao.PersonDAO;
 import edu.uco.budget.data.dao.YearDAO;
 import edu.uco.budget.data.dao.relational.sqlserver.BudgetSqlServerDAO;
 import edu.uco.budget.data.dao.relational.sqlserver.PersonSqlServerDAO;
 import edu.uco.budget.data.dao.relational.sqlserver.YearSqlServerDAO;
-import edu.uco.budget.crosscutting.messages.Messages.SqlConnectionHelper;
 
 final class SqlServerDAOFactory extends DAOFactory {
 
@@ -28,21 +30,24 @@ final class SqlServerDAOFactory extends DAOFactory {
 		try {
 			connection = DriverManager.getConnection(url);
 		} catch (Exception exception) {
-			throw CrosscutingCustomException.createTechnicalException(SqlConnectionHelper.TECHNICAL_CONNECTION_IS_NULL,
+			throw CrosscutingCustomException.createTechnicalException(Messages.SqlConnectionHelper.TECHNICAL_CONNECTION_IS_NULL,
 					exception);
 		}
 	}
 
 	@Override
 	public void initTransaction() {
-		// TODO Auto-generated method stub
-
+		try {
+			SqlConnectionHelper.initTransation(connection);
+		} catch (CrosscutingCustomException exception) {
+			throw DataCustomException.createTechnicalException(Messages.SqlServerDAOFactory.TECHNICAL_PROBLEM_INIT_TRANSACTION, exception);
+		}
 	}
 
 	@Override
 	public void confirmTransaction() {
 		try {
-			connection.commit();
+			SqlConnectionHelper.commitTransation(connection);
 		} catch (Exception exception) {
 
 		}
@@ -51,7 +56,7 @@ final class SqlServerDAOFactory extends DAOFactory {
 	@Override
 	public void cancelTransaction() {
 		try {
-			connection.rollback();
+		SqlConnectionHelper.rollbackTransation(connection);
 		} catch (Exception exception) {
 			// TODO: handle exception
 		}
@@ -61,7 +66,7 @@ final class SqlServerDAOFactory extends DAOFactory {
 	@Override
 	public void closeConnection() {
 		try {
-			connection.close();
+		SqlConnectionHelper.closeConnection(connection);
 		} catch (Exception exception) {
 			// TODO: handle exception
 		}
@@ -82,5 +87,4 @@ final class SqlServerDAOFactory extends DAOFactory {
 	public YearDAO getYearDAO() {
 		return new YearSqlServerDAO(connection);
 	}
-
 }

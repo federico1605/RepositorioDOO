@@ -10,16 +10,18 @@ public class BudgetCustomException extends RuntimeException {
 	private String userMessage;
 	private LayerException layer;
 
-	protected BudgetCustomException(final Exception rootException,final String technicalMessage,final String userMessage,
+	protected BudgetCustomException(final Throwable rootException,final String technicalMessage,final String userMessage,
 			final LayerException layer) {
 		super(technicalMessage, getDefaultIfNull(rootException, new Exception()));
+		setUserMessage(userMessage);
+		setLayer(layer);
 	}
 
 	public final String getUserMessage() {
 		return userMessage;
 	}
 
-	public final void setUserMessage(String userMessage) {
+	private final void setUserMessage(String userMessage) {
 		this.userMessage = userMessage;
 	}
 
@@ -27,8 +29,8 @@ public class BudgetCustomException extends RuntimeException {
 		return layer;
 	}
 
-	public final void setLayer(LayerException layer) {
-		this.layer = layer;
+	private final void setLayer(LayerException layer) {
+		this.layer = getDefaultIfNull(layer, LayerException.APPLICATION);
 	}
 	
 	public final boolean isTechnicalException() {

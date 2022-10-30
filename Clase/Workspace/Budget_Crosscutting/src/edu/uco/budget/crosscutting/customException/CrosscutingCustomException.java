@@ -11,11 +11,11 @@ public class CrosscutingCustomException extends BudgetCustomException{
 		super(rootException, technicalMessage, userMessage, LayerException.CROSSCUTING);
 	}
 	
-	public static CrosscutingCustomException create(String userMessage, String technicalMessage) {
-		return new CrosscutingCustomException(new Exception(), userMessage, technicalMessage);
+	public static final BudgetCustomException createTechnicalException(final String technicalMessage,final Exception rootException) {
+		return new CrosscutingCustomException(rootException, technicalMessage, EMPTY);
 	}
 	
-	public static final BudgetCustomException createTechnicalException(final String technicalMessage,final Exception rootException) {
+	public static final BudgetCustomException createTechnicalException(final String technicalMessage) {
 		return new CrosscutingCustomException(new Exception(), technicalMessage, EMPTY);
 	}
 	
@@ -26,5 +26,9 @@ public class CrosscutingCustomException extends BudgetCustomException{
 	public static final BudgetCustomException create(final String userMessage, final String technicalMessage,
 			final Exception rootException) {
 		return new CrosscutingCustomException(rootException, technicalMessage, userMessage);
+	}
+	
+	public static CrosscutingCustomException create(String userMessage, String technicalMessage) {
+		return new CrosscutingCustomException(new Exception(), userMessage, technicalMessage);
 	}
 }
