@@ -4,6 +4,7 @@ import java.sql.Connection;
 
 import edu.uco.budget.crosscutting.helper.SqlConnectionHelper;
 import edu.uco.budget.crosscutting.messages.Messages;
+import edu.uco.budget.crosscutting.customException.DataCustomException;
 
 
 public class DAORelational {
@@ -13,7 +14,7 @@ public class DAORelational {
 	protected DAORelational(final Connection connection) {
 		
 		if(!SqlConnectionHelper.connectionIsNull(connection)) {
-			throw new RuntimeException(Messages.SqlConnectionHelper.TECHNICAL_CONNECTION_IS_CLOSED);
+			throw DataCustomException.createTechnicalException(Messages.SqlConnectionHelper.TECHNICAL_CONNECTION_IS_CLOSED);
 		}		
 	
 		this.connection = connection;

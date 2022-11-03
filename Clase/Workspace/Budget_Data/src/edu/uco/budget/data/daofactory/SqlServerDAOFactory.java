@@ -30,7 +30,7 @@ final class SqlServerDAOFactory extends DAOFactory {
 		try {
 			connection = DriverManager.getConnection(url);
 		} catch (Exception exception) {
-			throw CrosscutingCustomException.createTechnicalException(Messages.SqlConnectionHelper.TECHNICAL_CONNECTION_IS_NULL,
+			throw DataCustomException.createTechnicalException(Messages.SqlConnectionHelper.TECHNICAL_CONNECTION_IS_CLOSED,
 					exception);
 		}
 	}

@@ -56,11 +56,32 @@ public static class SqlServerDAOFactory{
 		}
 		
 		public static final String TECHICAL_UUID_FROM_STRING_INAVLID ="The UUID to covert does not have a valied";
-		public static final String TECNICAL_UUID_FROM_STRING_UNEXPECTED_ERROR = "copiar error";
+		public static final String TECNICAL_UUID_FROM_STRING_UNEXPECTED_ERROR = "There was an unexpected exception trying to convert a UUID from String";
 	}
 	
-	/*public stactic class BudgetSqlServerDAO{
+	public static class BudgetSqlServerDAO{
 	 	private BudgetSqlServerDAO(){
-	 		super();
-	 	}*/
+	 		super();	
+	 	}	
+	 	
+	 	public static final String TECHNICAL_UNEXPECTED_PROBLEM_CREATE_BUDGET = "There was an unexpected problem trying to create the budget in SQLServerDaoFactory with id= ";
+	 	public static final String TECHNICAL_PROBLEM_CREATE_BUDGET = "There was a problem trying to create the budget in SQLServerDaoFactory with id= ";
+	 	public static final String TECHNICAL_PROBLEM_UPDATE_BUDGET = "There was a problem trying to update the budget in SQLServerDaoFactory with id= ";
+	 	public static final String TECHNICAL_PROBLEM_DELETE_BUDGET = "There was a problem trying to delete the budget in SQLServerDaoFactory with id= ";
+	 	public static final String TECHNICAL_PROBLEM_FILL_RESULTS = "There was a problem recovering results from the select ";
+	 	public static final String TECHNICAL_UNEXPECTED_PROBLEM_FILL_RESULTS = "There was an unexpected problem trying recovering results from the select ";
+	 	public static final String TECHNICAL_PROBLEM_FILL_BUDGET_DTO = "There was a problem filling BudgetDTO from the resultSet ";
+	 	public static final String TECHNICAL_UNEXPECTED_PROBLEM_FILL_BUDGET_DTO = "There was an unexpected problem trying fill BudgetDTO from the resultSet ";
+	 	public static final String TECHNICAL_PROBLEM_FILL_YEAR_DTO = "There was a problem filling YearDTO from the resultSet ";
+	 	public static final String TECHNICAL_UNEXPECTED_PROBLEM_FILL_YEAR_DTO = "There was an unexpected problem trying fill YearDTO from the resultSet ";
+	 	public static final String TECHNICAL_PROBLEM_FILL_PERSON_DTO = "There was a problem filling PersonDTO from the resultSet ";
+	 	public static final String TECHNICAL_UNEXPECTED_PROBLEM_FILL_PERSON_DTO = "There was an unexpected problem trying fill PersonDTO from the resultSet ";
+	 	public static final String TECHNICAL_PROBLEM_EXECUTE_QUERY = "There was a problem trying to excute query to find the specific budget";
+	 	public static final String TECHNICAL_UNEXPECTED_PROBLEM_EXECEUTE_QUERY = "There was an unexpected problem trying to execute query to finad the specific budgets";
+	 	public static final String TECHNICAL_PROBLEM_SET_PARAMETER_VALUES_QUERY = "There was a problem trying to set the parameters values to the query";
+	 	public static final String TECHNICAL_UNEXPECTED_PROBLEM_SET_PARAMETER_VALUES_QUERY = "There was an unexpected problem trying to set the parameters values to the query";
+	 	public static final String TECHNICAL_PROBLEM_PREPARED_STAMENT = "There was a problem trying to prepared the sql stament the parameters";
+	 	public static final String TECHNICAL_UNEXPECTED_PROBLEM_PREPARED_STAMENT = "There was an unexpected problem trying to prepared the sql stament the parameters";
+	 	
+	}
 }

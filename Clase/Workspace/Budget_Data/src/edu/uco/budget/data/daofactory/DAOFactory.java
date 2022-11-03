@@ -1,7 +1,7 @@
 package edu.uco.budget.data.daofactory;
 
 import edu.uco.budget.crosscutting.customException.BudgetCustomException;
-import edu.uco.budget.crosscutting.customException.CrosscutingCustomException;
+import edu.uco.budget.crosscutting.customException.DataCustomException;
 import edu.uco.budget.crosscutting.messages.Messages;
 import edu.uco.budget.data.dao.BudgetDAO;
 import edu.uco.budget.data.dao.PersonDAO;
@@ -19,7 +19,7 @@ public abstract class DAOFactory {
 			try {
 				daoFactory = new SqlServerDAOFactory();
 			} catch (BudgetCustomException excetion) {
-				throw CrosscutingCustomException.createTechnicalException(Messages.DAOFactory.TECHNICAL_UNEXPECTED_DAOFACTORY, 
+				throw DataCustomException.createTechnicalException(Messages.SqlConnectionHelper.TECHNICAL_CONNECTION_IS_NULL, 
 						excetion);
 			}
 			break;
@@ -27,7 +27,7 @@ public abstract class DAOFactory {
 			try {
 				daoFactory = new SqlServerDAOFactory();
 			} catch (BudgetCustomException excetion) {
-				throw CrosscutingCustomException.createTechnicalException(Messages.DAOFactory.TECHNICAL_CASSANDRA_NOT_IMPLEMENTED, 
+				throw DataCustomException.createTechnicalException(Messages.DAOFactory.TECHNICAL_CASSANDRA_NOT_IMPLEMENTED, 
 						excetion);
 			}
 			break;
@@ -35,7 +35,7 @@ public abstract class DAOFactory {
 			try {
 				daoFactory = new SqlServerDAOFactory();
 			} catch (Exception excetion) {
-				throw CrosscutingCustomException.createTechnicalException(Messages.DAOFactory.TECHNICAL_MARIADB_NOT_IMPLEMENTED, 
+				throw DataCustomException.createTechnicalException(Messages.DAOFactory.TECHNICAL_MARIADB_NOT_IMPLEMENTED, 
 						excetion);
 			}
 			break;
@@ -43,7 +43,7 @@ public abstract class DAOFactory {
 			try {
 				daoFactory = new SqlServerDAOFactory();
 			} catch (Exception excetion) {
-				throw CrosscutingCustomException.createTechnicalException(Messages.DAOFactory.TECHNICAL_MONGDB_NOT_IMPLEMENTED, 
+				throw DataCustomException.createTechnicalException(Messages.DAOFactory.TECHNICAL_MONGDB_NOT_IMPLEMENTED, 
 						excetion);
 			}
 			break;
@@ -51,7 +51,7 @@ public abstract class DAOFactory {
 			try {
 				daoFactory = new SqlServerDAOFactory();
 			} catch (Exception excetion) {
-				throw CrosscutingCustomException.createTechnicalException(Messages.DAOFactory.TECHNICAL_MYSQL_NOT_IMPLEMENTED, 
+				throw DataCustomException.createTechnicalException(Messages.DAOFactory.TECHNICAL_MYSQL_NOT_IMPLEMENTED, 
 						excetion);
 			}
 			break;
@@ -59,7 +59,7 @@ public abstract class DAOFactory {
 			try {
 				daoFactory = new SqlServerDAOFactory();
 			} catch (Exception excetion) {
-				throw CrosscutingCustomException.createTechnicalException(Messages.DAOFactory.TECHNICAL_ORACLE_NOT_IMPLEMENTED, 
+				throw DataCustomException.createTechnicalException(Messages.DAOFactory.TECHNICAL_ORACLE_NOT_IMPLEMENTED, 
 						excetion);
 			}
 			break;
@@ -67,7 +67,7 @@ public abstract class DAOFactory {
 			try {
 				daoFactory = new SqlServerDAOFactory();
 			} catch (Exception excetion) {
-				throw CrosscutingCustomException.createTechnicalException(Messages.DAOFactory.TECHNICAL_POSTGRESQL_NOT_IMPLEMENTED, 
+				throw DataCustomException.createTechnicalException(Messages.DAOFactory.TECHNICAL_POSTGRESQL_NOT_IMPLEMENTED, 
 						excetion);
 			}
 			break;
@@ -75,7 +75,7 @@ public abstract class DAOFactory {
 			try {
 				daoFactory = new SqlServerDAOFactory();
 			} catch (Exception excetion) {
-				throw CrosscutingCustomException.createTechnicalException(Messages.DAOFactory.TECHNICAL_UNEXPECTED_DAOFACTORY, 
+				throw DataCustomException.createTechnicalException(Messages.DAOFactory.TECHNICAL_UNEXPECTED_DAOFACTORY, 
 						excetion);
 			}
 			break;
