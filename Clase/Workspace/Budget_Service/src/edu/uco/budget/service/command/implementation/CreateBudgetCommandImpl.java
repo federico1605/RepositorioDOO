@@ -25,7 +25,7 @@ public class CreateBudgetCommandImpl implements CreateBudgetCommand{
 			throw exception;
 		} catch (final Exception exception) {
 			factory.cancelTransaction();
-			throw 
+			throw exception;
 		}finally {
 			factory.closeConnection();
 		}
