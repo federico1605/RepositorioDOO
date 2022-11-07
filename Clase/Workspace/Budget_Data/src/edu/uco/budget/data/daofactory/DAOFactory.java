@@ -1,7 +1,7 @@
 package edu.uco.budget.data.daofactory;
 
 import edu.uco.budget.crosscutting.customException.BudgetCustomException;
-import edu.uco.budget.crosscutting.customException.DataCustomException;
+import edu.uco.budget.crosscutting.customException.Data.DataCustomException;
 import edu.uco.budget.crosscutting.messages.Messages;
 import edu.uco.budget.data.dao.BudgetDAO;
 import edu.uco.budget.data.dao.PersonDAO;

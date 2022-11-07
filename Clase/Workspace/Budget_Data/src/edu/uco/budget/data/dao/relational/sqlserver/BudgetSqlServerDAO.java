@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-import edu.uco.budget.crosscutting.customException.DataCustomException;
+import edu.uco.budget.crosscutting.customException.Data.DataCustomException;
 import edu.uco.budget.crosscutting.helper.ObjectHelper;
 import edu.uco.budget.crosscutting.helper.UUIDHelper;
 import edu.uco.budget.crosscutting.messages.Messages;
@@ -180,7 +180,7 @@ public class BudgetSqlServerDAO extends DAORelational implements BudgetDAO {
 	
 	private final YearDTO fillYearDTO(final ResultSet resultSet) {
 		try {
-			return YearDTO.create(resultSet.getString("IdYeara"), resultSet.getShort("NumberYear"));
+			return YearDTO.create(resultSet.getString("IdYear"), resultSet.getShort("NumberYear"));
 		} catch (final SQLException exception) {
 			throw DataCustomException.createTechnicalException(Messages.BudgetSqlServerDAO.TECHNICAL_PROBLEM_FILL_YEAR_DTO, exception);
 		}catch (final Exception exception) {
@@ -213,7 +213,7 @@ public class BudgetSqlServerDAO extends DAORelational implements BudgetDAO {
 			String message = Messages.BudgetSqlServerDAO.TECHNICAL_PROBLEM_UPDATE_BUDGET.concat(budget.getIdAsString());
 			throw DataCustomException.createTechnicalException(message, exception);
 		}catch (final Exception exception) {
-			throw DataCustomException.createTechnicalException(Messages.BudgetSqlServerDAO.TECHNICAL_UNEXPECTED_PROBLEM_CREATE_BUDGET, exception);
+			throw DataCustomException.createTechnicalException(Messages.BudgetSqlServerDAO.TECHNICAL_UNEXPECTED_PROBLEM_EXECEUTE_QUERY, exception);
 		}
 		
 	}
@@ -231,8 +231,8 @@ public class BudgetSqlServerDAO extends DAORelational implements BudgetDAO {
 			String message = Messages.BudgetSqlServerDAO.TECHNICAL_PROBLEM_DELETE_BUDGET;
 			throw DataCustomException.createTechnicalException(message, exception);
 		}catch (final Exception exception) {
-			throw DataCustomException.createTechnicalException(Messages.BudgetSqlServerDAO.TECHNICAL_UNEXPECTED_PROBLEM_CREATE_BUDGET, exception);
+			throw DataCustomException.createTechnicalException(Messages.BudgetSqlServerDAO.TECHNICAL_UNEXPECTED_PROBLEM_EXECEUTE_QUERY, exception);
 		}
 		
 	}
-	}
+}

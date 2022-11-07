@@ -1,5 +1,6 @@
-package edu.uco.budget.crosscutting.customException;
+package edu.uco.budget.crosscutting.customException.crossctting;
 
+import edu.uco.budget.crosscutting.customException.BudgetCustomException;
 import edu.uco.budget.crosscutting.customException.enumeration.LayerException;
 import static edu.uco.budget.crosscutting.helper.StringHelper.EMPTY;
 

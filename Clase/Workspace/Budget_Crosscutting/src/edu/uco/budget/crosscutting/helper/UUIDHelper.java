@@ -1,7 +1,8 @@
 package edu.uco.budget.crosscutting.helper;
 
 import java.util.UUID;
-import edu.uco.budget.crosscutting.customException.CrosscutingCustomException;
+
+import edu.uco.budget.crosscutting.customException.crossctting.CrosscutingCustomException;
 import edu.uco.budget.crosscutting.messages.Messages;
 
 public class UUIDHelper {

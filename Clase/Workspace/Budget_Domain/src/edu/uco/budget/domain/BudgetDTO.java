@@ -7,7 +7,7 @@ import static edu.uco.budget.crosscutting.helper.UUIDHelper.getNewUUID;
 
 import java.util.UUID;
 
-import edu.uco.budget.crosscutting.customException.CrosscutingCustomException;
+import edu.uco.budget.crosscutting.customException.crossctting.CrosscutingCustomException;
 import edu.uco.budget.crosscutting.helper.StringHelper;
 import edu.uco.budget.crosscutting.messages.Messages;
 
