@@ -29,7 +29,7 @@ public class BudgetSqlServerDAO extends DAORelational implements BudgetDAO {
 	public final void create(final BudgetDTO budget) {
 		final var sql = "INSERT INTO BUDGET(id,year,idPerson) VALUES (?,?,?)";
 		
-		try (final var preparedStatement = getConnection().prepareStatement(sql) ){
+		try (final var preparedStatement = getConnection().prepareStatement(sql)){
 			preparedStatement.setString(1, budget.getIdAsString());
 			preparedStatement.setString(2, budget.getYear().getIdAsString());
 			preparedStatement.setString(3, budget.getPerson().getIdAsString());
@@ -42,7 +42,6 @@ public class BudgetSqlServerDAO extends DAORelational implements BudgetDAO {
 		}catch (final Exception exception) {
 			throw DataCustomException.createTechnicalException(Messages.BudgetSqlServerDAO.TECHNICAL_UNEXPECTED_PROBLEM_CREATE_BUDGET, exception);
 		}
-		
 	}
 
 	@Override
@@ -118,6 +117,7 @@ public class BudgetSqlServerDAO extends DAORelational implements BudgetDAO {
 		sqlBuilder.append("ORDER BY   Pe.idCard ASC,");
 		sqlBuilder.append("           Ye.year ASC");		
 	}	
+	
 	private final List<BudgetDTO> executeQuery(PreparedStatement preparedStatement){
 		try (final var resultset = preparedStatement.executeQuery()){
 			return fillResults(resultset);	
@@ -143,13 +143,13 @@ public class BudgetSqlServerDAO extends DAORelational implements BudgetDAO {
 	}
 
 	
-	private final List<BudgetDTO> fillResults(final ResultSet resultset){
+	private final List<BudgetDTO> fillResults(final ResultSet resultSet){
 		
 		try {
 			var results = new ArrayList<BudgetDTO>();
 			
-			while(resultset.next()) {
-				results.add(fillBudgetDTO(resultset));
+			while(resultSet.next()) {
+				results.add(fillBudgetDTO(resultSet));
 			}
 			
 			return results;
@@ -233,6 +233,5 @@ public class BudgetSqlServerDAO extends DAORelational implements BudgetDAO {
 		}catch (final Exception exception) {
 			throw DataCustomException.createTechnicalException(Messages.BudgetSqlServerDAO.TECHNICAL_UNEXPECTED_PROBLEM_EXECEUTE_QUERY, exception);
 		}
-		
 	}
 }
