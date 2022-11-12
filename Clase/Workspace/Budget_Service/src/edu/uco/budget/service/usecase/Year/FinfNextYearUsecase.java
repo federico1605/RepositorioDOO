@@ -4,5 +4,5 @@ import edu.uco.budget.domain.YearDTO;
 
 public interface FinfNextYearUsecase {
 
-	YearDTO execute();
-}
+    YearDTO execute();
+ }

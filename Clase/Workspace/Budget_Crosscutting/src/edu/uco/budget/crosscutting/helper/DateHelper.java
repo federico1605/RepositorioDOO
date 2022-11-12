@@ -8,7 +8,9 @@ public class DateHelper {
 		super();
 	}
 	
-	public final short getNextYear() {
-		return (short) LocalDate.now().plusYears(1).getYear();
-	}
+    public static final short getNextYear(){
+
+        return (short) LocalDate.now().plusYears(1).getYear();
+
+    }
 }

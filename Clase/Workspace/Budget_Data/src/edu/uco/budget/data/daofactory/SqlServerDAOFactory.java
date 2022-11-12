@@ -28,7 +28,7 @@ final class SqlServerDAOFactory extends DAOFactory {
 				+ "user=userDmlBudget;" + "password=us3rDmlBudg3t;" + "encrypt=true;" + "trustServerCertificate=false;"
 				+ "hostNameInCertificate=*.database.windows.net;" + "loginTimeout=30;";
 		try {
-			connection = DriverManager.getConnection(url);
+			//connection = DriverManager.getConnection(url);
 		} catch (Exception exception) {
 			throw DataCustomException.createTechnicalException(Messages.SqlConnectionHelper.TECHNICAL_CONNECTION_IS_CLOSED,
 					exception);
